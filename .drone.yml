@@ -2,8 +2,7 @@ pipeline:
   build:
     image: betaflight/betaflight-build
     commands:
-      - make arm_sdk_install
-      - make ${TARGET}
+      - GCC_REQUIRED_VERSION=4.9.3 make ${TARGET}
 
 matrix:
   TARGET:
