@@ -1,0 +1,79 @@
+pipeline:
+  build:
+    image: betaflight/betaflight-build
+    commands:
+      - make ${TARGET}
+
+matrix:
+  TARGET:
+    - AFROMINI
+    - AIORACERF3
+    - AIR32
+    - AIRBOTF4
+    - AIRHEROF3
+    - ALIENFLIGHTF1
+    - ALIENFLIGHTF3
+    - ALIENFLIGHTF4
+    - ANYFCF7
+    - BEEBRAIN
+    - BETAFLIGHTF3
+    - BLUEJAYF4
+    - CC3D
+    - CC3D_OPBL
+    - CHEBUZZF3
+    - CJMCU
+    - COLIBRI
+    - COLIBRI_OPBL
+    - COLIBRI_RACE
+    - DOGE
+    - ELLE0
+    - F4BY
+    - FISHDRONEF4
+    - FLIP32F3OSD
+    - FURYF3
+    - FURYF4
+    - FURYF7
+    - IMPULSERCF3
+    - IRCFUSIONF3
+    - ISHAPEDF3
+    - KAKUTEF4
+    - KISSCC
+    - KISSFC
+    - KIWIF4
+    - LUXV2_RACE
+    - LUX_RACE
+    - MICROSCISKY
+    - MOTOLAB
+    - MULTIFLITEPICO
+    - NAZE
+    - NERO
+    - NUCLEOF7
+    - OMNIBUS
+    - OMNIBUSF4
+    - OMNIBUSF4SD
+    - PIKOBLX
+    - PODIUMF4
+    - RACEBASE
+    - RCEXPLORERF3
+    - REVO
+    - REVOLT
+    - REVONANO
+    - REVO_OPBL
+    - RG_SSD_F3
+    - RMDO
+    - SINGULARITY
+    - SIRINFPV
+    - SOULF4
+    - SPARKY
+    - SPARKY2
+    - SPRACINGF3
+    - SPRACINGF3EVO
+    - SPRACINGF3MINI
+    - SPRACINGF3NEO
+    - STM32F3DISCOVERY
+    - TINYBEEF3
+    - TINYFISH
+    - VRRACE
+    - X_RACERSPI
+    - YUPIF4
+    - ZCOREF3
