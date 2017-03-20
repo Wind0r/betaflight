@@ -2,7 +2,7 @@ pipeline:
   build:
     image: betaflight/betaflight-build
     commands:
-      - GCC_REQUIRED_VERSION=4.9.3 make ${TARGET}
+      - make ${TARGET}
 
 matrix:
   TARGET:
