@@ -1061,7 +1061,7 @@ SIZE        := $(ARM_SDK_PREFIX)size
 #
 
 ifneq ($(DEBUG),GDB)
-OPTIMISATION_BASE   := -flto -fuse-linker-plugin -ffast-math
+OPTIMISATION_BASE   := -fuse-linker-plugin -ffast-math
 OPTIMISE_SPEED      := ""
 OPTIMISE_SIZE       := ""
 
@@ -1131,7 +1131,7 @@ ASFLAGS     = $(ARCH_FLAGS) \
 
 LDFLAGS     = -lm \
               -nostartfiles \
-              --specs=nano.specs \
+              --specs=nosys.specs \
               -lc \
               -lnosys \
               $(ARCH_FLAGS) \

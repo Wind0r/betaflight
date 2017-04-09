@@ -498,13 +498,13 @@ typedef union {
 } cliValueConfig_t;
 
 typedef struct {
-    uint16_t name;
-    uint8_t type; // see cliValueFlag_e
+    const uint16_t name;
+    const uint8_t type; // see cliValueFlag_e
     const cliValueConfig_t config;
 
     pgn_t pgn;
     uint16_t offset;
-} clivalue_t;
+} __attribute__((packed)) clivalue_t;
 
 
 clivalue_t valueTable[] = {
@@ -3545,8 +3545,7 @@ static void cliGet(char *cmdline)
     int matchedCommands = 0;
 
     for (uint32_t i = 0; i < ARRAYLEN(valueTable); i++) {
-        UNUSED(cmdline);
-        if(valueTable[i].name == CHECKSUM(cmdline)) {
+        if(valueTable[i].name == getChecksum(cmdline)) {
             val = &valueTable[i];
             cliPrintf("%s = ", valueTable[i].name);
             cliPrintVar(val, 0);
@@ -3598,9 +3597,8 @@ static void cliSet(char *cmdline)
 
         for (uint32_t i = 0; i < ARRAYLEN(valueTable); i++) {
             val = &valueTable[i];
-            // ensure exact match when setting to prevent setting variables with shorter names
-            if (valueTable[i].name == CHECKSUM(cmdline)) {
-
+            // TODO: get vale (not cmdline) and caluclate checksum 
+            if (valueTable[i].name == getChecksum(cmdline)) {
                 bool changeValue = false;
                 int_float_value_t tmp = { 0 };
                 switch (valueTable[i].type & VALUE_MODE_MASK) {
