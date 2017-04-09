@@ -693,7 +693,7 @@ COMMON_SRC = \
             fc/rc_adjustments.c \
             fc/rc_controls.c \
             fc/runtime_config.c \
-            fc/cli.c \
+            fc/cli.cpp \
             flight/altitudehold.c \
             flight/failsafe.c \
             flight/imu.c \
@@ -1215,11 +1215,15 @@ $(OBJECT_DIR)/$(TARGET)/%.o: %.c
 	$(CROSS_CC) -c -o $@ $(CFLAGS) $(CC_SIZE_OPTIMISATION) $<, \
 	echo "%% $(notdir $<)" "$(STDOUT)" && \
 	$(CROSS_CC) -c -o $@ $(CFLAGS) $(CC_DEFAULT_OPTIMISATION) $<))
+$(OBJECT_DIR)/$(TARGET)/%.o: %.cpp
+	$(CROSS_CXX) -c -o $@ $(CFLAGS) -fpermissive -Wno-narrowing $(CC_DEFAULT_OPTIMISATION) $<
 else
 $(OBJECT_DIR)/$(TARGET)/%.o: %.c
 	$(V1) mkdir -p $(dir $@)
 	$(V1) echo "%% $(notdir $<)" "$(STDOUT)" && \
 	$(CROSS_CC) -c -o $@ $(CFLAGS) $(CC_DEBUG_OPTIMISATION) $<
+$(OBJECT_DIR)/$(TARGET)/%.o: %.cpp
+	$(CROSS_CXX) -c -o -fpermissive -Wno-narrowing $@ $<
 endif
 
 # Assemble
