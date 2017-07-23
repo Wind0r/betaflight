@@ -20,7 +20,7 @@
 #undef TELEMETRY_IBUS   //no space left
 #undef TELEMETRY_HOTT   //no space left
 #undef TELEMETRY_JETIEXBUS
-#undef USE_GYRO_DATA_ANALYSE
+#define USE_GYRO_DATA_ANALYSE
 
 #define TARGET_BOARD_IDENTIFIER "OMNI" // https://en.wikipedia.org/wiki/Omnibus
 
@@ -46,15 +46,6 @@
 #define USE_ACC_SPI_MPU6000
 #define ACC_MPU6000_ALIGN       CW90_DEG
 
-#define BMP280_SPI_INSTANCE     SPI1
-#define BMP280_CS_PIN           PA13
-
-#define BARO
-#define USE_BARO_BMP280
-#define USE_BARO_SPI_BMP280
-
-#define MAG // External
-#define USE_MAG_HMC5883
 
 //#define SONAR
 //#define SONAR_ECHO_PIN          PB1
