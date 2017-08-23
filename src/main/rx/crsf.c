@@ -177,6 +177,12 @@ STATIC_UNIT_TESTED uint8_t crsfFrameStatus(void)
             crsfChannelData[15] = rcChannels->chan15;
             return RX_FRAME_COMPLETE;
         }
+        #ifdef 0
+        else (crsfFrame.frame.type == CRSF_FRAMETYPE_MSP) {
+          processMspPacket() // See smartport
+
+        }
+        #endif
     }
     return RX_FRAME_PENDING;
 }

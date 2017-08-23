@@ -232,6 +232,11 @@ void crsfFrameFlightMode(sbuf_t *dst)
     *lengthPtr = sbufPtr(dst) - lengthPtr;
 }
 
+void crsfFrameMSP(sbuf_t *dst){
+  sbufWriteU8(dst, CRSF_FRAMETYPE_MSP);
+}
+
+
 #define BV(x)  (1 << (x)) // bit value
 
 // schedule array to decide how often each type of frame is sent
@@ -268,6 +273,13 @@ static void processCrsf(void)
         crsfInitializeFrame(dst);
         crsfFrameGps(dst);
         crsfFinalize(dst);
+    }
+#endif
+#ifdef 0 // This is for sending msp back to fc
+    if (currentSchedule & BV(CRSF_FRAME_MSP)) {
+      crsfInitializeFrame(dst);
+      crsfFrameMSP(dst);
+      crsfFinalize(dst);
     }
 #endif
     crsfScheduleIndex = (crsfScheduleIndex + 1) % crsfScheduleCount;
@@ -315,31 +327,3 @@ void handleCrsfTelemetry(timeUs_t currentTimeUs)
         processCrsf();
     }
 }
-
-int getCrsfFrame(uint8_t *frame, crsfFrameType_e frameType)
-{
-    sbuf_t crsfFrameBuf;
-    sbuf_t *sbuf = &crsfFrameBuf;
-
-    crsfInitializeFrame(sbuf);
-    switch (frameType) {
-    default:
-    case CRSF_FRAME_ATTITUDE:
-        crsfFrameAttitude(sbuf);
-        break;
-    case CRSF_FRAME_BATTERY_SENSOR:
-        crsfFrameBatterySensor(sbuf);
-        break;
-    case CRSF_FRAME_FLIGHT_MODE:
-        crsfFrameFlightMode(sbuf);
-        break;
-#if defined(GPS)
-    case CRSF_FRAME_GPS:
-        crsfFrameGps(sbuf);
-        break;
-#endif
-    }
-    const int frameSize = crsfFinalizeBuf(sbuf, frame);
-    return frameSize;
-}
-#endif

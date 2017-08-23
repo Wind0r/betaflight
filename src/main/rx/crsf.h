@@ -29,7 +29,8 @@ typedef enum {
     CRSF_FRAMETYPE_LINK_STATISTICS = 0x14,
     CRSF_FRAMETYPE_RC_CHANNELS_PACKED = 0x16,
     CRSF_FRAMETYPE_ATTITUDE = 0x1E,
-    CRSF_FRAMETYPE_FLIGHT_MODE = 0x21
+    CRSF_FRAMETYPE_FLIGHT_MODE = 0x21,
+    CRSF_FRAMETYPE_MSP = 0x33  // need to be the same number as in lua script. also asked tbs for a reversed number so other hardware do not get confused 
 } crsfFrameTypes_e;
 
 enum {
