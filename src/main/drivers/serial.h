@@ -73,13 +73,13 @@ typedef struct serialPort_s {
 } serialPort_t;
 
 #if defined(USE_SOFTSERIAL1) || defined(USE_SOFTSERIAL2)
-# ifdef USE_SOFTSERIAL2
-#  define SERIAL_PORT_MAX_INDEX (RESOURCE_SOFT_OFFSET + 2)
-# else
-#  define SERIAL_PORT_MAX_INDEX (RESOURCE_SOFT_OFFSET + 1)
-# endif
+#ifdef USE_SOFTSERIAL2
+#define SERIAL_PORT_MAX_INDEX (RESOURCE_SOFT_OFFSET + 2)
 #else
-# define SERIAL_PORT_MAX_INDEX RESOURCE_SOFT_OFFSET
+#define SERIAL_PORT_MAX_INDEX (RESOURCE_SOFT_OFFSET + 1)
+#endif
+#else
+#define SERIAL_PORT_MAX_INDEX RESOURCE_SOFT_OFFSET
 #endif
 
 typedef struct serialPinConfig_s {

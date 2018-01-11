@@ -5,14 +5,14 @@
 
 #ifdef __cplusplus
 // use original implementation for C++
-# include_next <ctype.h>
+#include_next <ctype.h>
 #endif
 
 #ifndef _CTYPE_H_
 #define _CTYPE_H_
 
 #ifndef _EXFUN
-# define _EXFUN(name,proto) name proto
+#define _EXFUN(name,proto) name proto
 #endif
 
 int _EXFUN(isalnum, (int __c));

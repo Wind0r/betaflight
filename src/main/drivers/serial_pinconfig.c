@@ -106,117 +106,117 @@
 // Default pin (NONE).
 
 #ifdef USE_UART1
-# if !defined(UART1_RX_PIN)
-#  define UART1_RX_PIN NONE
-# endif
-# if !defined(UART1_TX_PIN)
-#  define UART1_TX_PIN NONE
-# endif
-# if !defined(INVERTER_PIN_UART1)
-#  define INVERTER_PIN_UART1 NONE
-# endif
+#if !defined(UART1_RX_PIN)
+#define UART1_RX_PIN NONE
+#endif
+#if !defined(UART1_TX_PIN)
+#define UART1_TX_PIN NONE
+#endif
+#if !defined(INVERTER_PIN_UART1)
+#define INVERTER_PIN_UART1 NONE
+#endif
 #endif
 
 #ifdef USE_UART2
-# if !defined(UART2_RX_PIN)
-#  define UART2_RX_PIN NONE
-# endif
-# if !defined(UART2_TX_PIN)
-#  define UART2_TX_PIN NONE
-# endif
-# if !defined(INVERTER_PIN_UART2)
-#  define INVERTER_PIN_UART2 NONE
-# endif
+#if !defined(UART2_RX_PIN)
+#define UART2_RX_PIN NONE
+#endif
+#if !defined(UART2_TX_PIN)
+#define UART2_TX_PIN NONE
+#endif
+#if !defined(INVERTER_PIN_UART2)
+#define INVERTER_PIN_UART2 NONE
+#endif
 #endif
 
 #ifdef USE_UART3
-# if !defined(UART3_RX_PIN)
-#  define UART3_RX_PIN NONE
-# endif
-# if !defined(UART3_TX_PIN)
-#  define UART3_TX_PIN NONE
-# endif
-# if !defined(INVERTER_PIN_UART3)
-#  define INVERTER_PIN_UART3 NONE
-# endif
+#if !defined(UART3_RX_PIN)
+#define UART3_RX_PIN NONE
+#endif
+#if !defined(UART3_TX_PIN)
+#define UART3_TX_PIN NONE
+#endif
+#if !defined(INVERTER_PIN_UART3)
+#define INVERTER_PIN_UART3 NONE
+#endif
 #endif
 
 #ifdef USE_UART4
-# if !defined(UART4_RX_PIN)
-#  define UART4_RX_PIN NONE
-# endif
-# if !defined(UART4_TX_PIN)
-#  define UART4_TX_PIN NONE
-# endif
-# if !defined(INVERTER_PIN_UART4)
-#  define INVERTER_PIN_UART4 NONE
-# endif
+#if !defined(UART4_RX_PIN)
+#define UART4_RX_PIN NONE
+#endif
+#if !defined(UART4_TX_PIN)
+#define UART4_TX_PIN NONE
+#endif
+#if !defined(INVERTER_PIN_UART4)
+#define INVERTER_PIN_UART4 NONE
+#endif
 #endif
 
 #ifdef USE_UART5
-# if !defined(UART5_RX_PIN)
-#  define UART5_RX_PIN NONE
-# endif
-# if !defined(UART5_TX_PIN)
-#  define UART5_TX_PIN NONE
-# endif
-# if !defined(INVERTER_PIN_UART5)
-#  define INVERTER_PIN_UART5 NONE
-# endif
+#if !defined(UART5_RX_PIN)
+#define UART5_RX_PIN NONE
+#endif
+#if !defined(UART5_TX_PIN)
+#define UART5_TX_PIN NONE
+#endif
+#if !defined(INVERTER_PIN_UART5)
+#define INVERTER_PIN_UART5 NONE
+#endif
 #endif
 
 #ifdef USE_UART6
-# if !defined(UART6_RX_PIN)
-#  define UART6_RX_PIN NONE
-# endif
-# if !defined(UART6_TX_PIN)
-#  define UART6_TX_PIN NONE
-# endif
-# if !defined(INVERTER_PIN_UART6)
-#  define INVERTER_PIN_UART6 NONE
-# endif
+#if !defined(UART6_RX_PIN)
+#define UART6_RX_PIN NONE
+#endif
+#if !defined(UART6_TX_PIN)
+#define UART6_TX_PIN NONE
+#endif
+#if !defined(INVERTER_PIN_UART6)
+#define INVERTER_PIN_UART6 NONE
+#endif
 #endif
 
 #ifdef USE_UART7
-# if !defined(UART7_RX_PIN)
-#  define UART7_RX_PIN NONE
-# endif
-# if !defined(UART7_TX_PIN)
-#  define UART7_TX_PIN NONE
-# endif
-# if !defined(INVERTER_PIN_UART7)
-#  define INVERTER_PIN_UART7 NONE
-# endif
+#if !defined(UART7_RX_PIN)
+#define UART7_RX_PIN NONE
+#endif
+#if !defined(UART7_TX_PIN)
+#define UART7_TX_PIN NONE
+#endif
+#if !defined(INVERTER_PIN_UART7)
+#define INVERTER_PIN_UART7 NONE
+#endif
 #endif
 
 #ifdef USE_UART8
-# if !defined(UART8_RX_PIN)
-#  define UART8_RX_PIN NONE
-# endif
-# if !defined(UART8_TX_PIN)
-#  define UART8_TX_PIN NONE
-# endif
-# if !defined(INVERTER_PIN_UART8)
-#  define INVERTER_PIN_UART8 NONE
-# endif
+#if !defined(UART8_RX_PIN)
+#define UART8_RX_PIN NONE
+#endif
+#if !defined(UART8_TX_PIN)
+#define UART8_TX_PIN NONE
+#endif
+#if !defined(INVERTER_PIN_UART8)
+#define INVERTER_PIN_UART8 NONE
+#endif
 #endif
 
 #ifdef USE_SOFTSERIAL1
-# if !defined(SOFTSERIAL1_RX_PIN)
-#  define SOFTSERIAL1_RX_PIN NONE
-# endif
-# if !defined(SOFTSERIAL1_TX_PIN)
-#  define SOFTSERIAL1_TX_PIN NONE
-# endif
+#if !defined(SOFTSERIAL1_RX_PIN)
+#define SOFTSERIAL1_RX_PIN NONE
+#endif
+#if !defined(SOFTSERIAL1_TX_PIN)
+#define SOFTSERIAL1_TX_PIN NONE
+#endif
 #endif
 
 #ifdef USE_SOFTSERIAL2
-# if !defined(SOFTSERIAL2_RX_PIN)
-#  define SOFTSERIAL2_RX_PIN NONE
-# endif
-# if !defined(SOFTSERIAL2_TX_PIN)
-#  define SOFTSERIAL2_TX_PIN NONE
-# endif
+#if !defined(SOFTSERIAL2_RX_PIN)
+#define SOFTSERIAL2_RX_PIN NONE
+#endif
+#if !defined(SOFTSERIAL2_TX_PIN)
+#define SOFTSERIAL2_TX_PIN NONE
+#endif
 #endif
 
 #if defined(USE_UART) || defined(USE_SOFTSERIAL1) || defined(USE_SOFTSERIAL1)

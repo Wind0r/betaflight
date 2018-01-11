@@ -30,37 +30,37 @@ extern uint8_t __config_end;
 
 #if !defined(FLASH_PAGE_SIZE)
 // F1
-# if defined(STM32F10X_MD)
-#  define FLASH_PAGE_SIZE                 (0x400)
-# elif defined(STM32F10X_HD)
-#  define FLASH_PAGE_SIZE                 (0x800)
+#if defined(STM32F10X_MD)
+#define FLASH_PAGE_SIZE                 (0x400)
+#elif defined(STM32F10X_HD)
+#define FLASH_PAGE_SIZE                 (0x800)
 // F3
-# elif defined(STM32F303xC)
-#  define FLASH_PAGE_SIZE                 (0x800)
+#elif defined(STM32F303xC)
+#define FLASH_PAGE_SIZE                 (0x800)
 // F4
-# elif defined(STM32F40_41xxx)
-#  define FLASH_PAGE_SIZE                 ((uint32_t)0x4000) // 16K sectors
-# elif defined (STM32F411xE)
-#  define FLASH_PAGE_SIZE                 ((uint32_t)0x4000)
-# elif defined(STM32F427_437xx)
-#  define FLASH_PAGE_SIZE                 ((uint32_t)0x4000)
-# elif defined (STM32F446xx)
-#  define FLASH_PAGE_SIZE                 ((uint32_t)0x4000)
+#elif defined(STM32F40_41xxx)
+#define FLASH_PAGE_SIZE                 ((uint32_t)0x4000) // 16K sectors
+#elif defined (STM32F411xE)
+#define FLASH_PAGE_SIZE                 ((uint32_t)0x4000)
+#elif defined(STM32F427_437xx)
+#define FLASH_PAGE_SIZE                 ((uint32_t)0x4000)
+#elif defined (STM32F446xx)
+#define FLASH_PAGE_SIZE                 ((uint32_t)0x4000)
 // F7
 #elif defined(STM32F722xx)
-#  define FLASH_PAGE_SIZE                 ((uint32_t)0x4000) // 16K sectors
-# elif defined(STM32F745xx)
-#  define FLASH_PAGE_SIZE                 ((uint32_t)0x8000) // 32K sectors
-# elif defined(STM32F746xx)
-#  define FLASH_PAGE_SIZE                 ((uint32_t)0x8000)
-# elif defined(UNIT_TEST)
-#  define FLASH_PAGE_SIZE                 (0x400)
+#define FLASH_PAGE_SIZE                 ((uint32_t)0x4000) // 16K sectors
+#elif defined(STM32F745xx)
+#define FLASH_PAGE_SIZE                 ((uint32_t)0x8000) // 32K sectors
+#elif defined(STM32F746xx)
+#define FLASH_PAGE_SIZE                 ((uint32_t)0x8000)
+#elif defined(UNIT_TEST)
+#define FLASH_PAGE_SIZE                 (0x400)
 // SIMULATOR
-# elif defined(SIMULATOR_BUILD)
-#  define FLASH_PAGE_SIZE                 (0x400)
-# else
-#  error "Flash page size not defined for target."
-# endif
+#elif defined(SIMULATOR_BUILD)
+#define FLASH_PAGE_SIZE                 (0x400)
+#else
+#error "Flash page size not defined for target."
+#endif
 #endif
 
 void config_streamer_init(config_streamer_t *c)
@@ -93,7 +93,7 @@ void config_streamer_start(config_streamer_t *c, uintptr_t base, int size)
 #elif defined(UNIT_TEST) || defined(SIMULATOR_BUILD)
     // NOP
 #else
-# error "Unsupported CPU"
+#error "Unsupported CPU"
 #endif
     c->err = 0;
 }

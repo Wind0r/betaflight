@@ -37,12 +37,12 @@ __attribute__( ( always_inline ) ) static inline void __set_BASEPRI_MAX_nb(uint3
 }
 
 // set BASEPRI_MAX register, with memory barrier
-# if !defined(STM32F3) && !defined(STM32F4) && !defined(STM32F7) /* already defined in /lib/main/CMSIS/CM4/CoreSupport/core_cmFunc.h for F4 targets */
+#if !defined(STM32F3) && !defined(STM32F4) && !defined(STM32F7) /* already defined in /lib/main/CMSIS/CM4/CoreSupport/core_cmFunc.h for F4 targets */
 __attribute__( ( always_inline ) ) static inline void __set_BASEPRI_MAX(uint32_t basePri)
 {
     __ASM volatile ("\tMSR basepri_max, %0\n" : : "r" (basePri) : "memory" );
 }
-# endif
+#endif
 
 #endif
 
@@ -143,16 +143,16 @@ static inline uint8_t __basepriSetRetVal(uint8_t prio)
 // this macro can be used only ONCE PER LINE, but multiple uses per block are fine
 
 #if (__GNUC__ > 7)
-# warning "Please verify that ATOMIC_BARRIER works as intended"
+#warning "Please verify that ATOMIC_BARRIER works as intended"
 // increment version number if BARRIER works
 // TODO - use flag to disable ATOMIC_BARRIER and use full barrier instead
 // you should check that local variable scope with cleanup spans entire block
 #endif
 
 #ifndef __UNIQL
-# define __UNIQL_CONCAT2(x,y) x ## y
-# define __UNIQL_CONCAT(x,y) __UNIQL_CONCAT2(x,y)
-# define __UNIQL(x) __UNIQL_CONCAT(x,__LINE__)
+#define __UNIQL_CONCAT2(x,y) x ## y
+#define __UNIQL_CONCAT(x,y) __UNIQL_CONCAT2(x,y)
+#define __UNIQL(x) __UNIQL_CONCAT(x,__LINE__)
 #endif
 
 #define ATOMIC_BARRIER_ENTER(dataPtr, refStr)                              \

@@ -698,23 +698,23 @@ static void timCCxHandler(TIM_TypeDef *tim, timerConfig_t *timerConfig)
 
 #if USED_TIMERS & TIM_N(1)
 _TIM_IRQ_HANDLER(TIM1_CC_IRQHandler, 1);
-# if defined(STM32F10X)
+#if defined(STM32F10X)
 _TIM_IRQ_HANDLER(TIM1_UP_IRQHandler, 1);       // timer can't be shared
-# endif
-# if defined(STM32F40_41xxx) || defined (STM32F411xE)
-#  if USED_TIMERS & TIM_N(10)
+#endif
+#if defined(STM32F40_41xxx) || defined (STM32F411xE)
+#if USED_TIMERS & TIM_N(10)
 _TIM_IRQ_HANDLER2(TIM1_UP_TIM10_IRQHandler, 1, 10);  // both timers are in use
-#  else
+#else
 _TIM_IRQ_HANDLER(TIM1_UP_TIM10_IRQHandler, 1);     // timer10 is not used
-#  endif
-# endif
-# ifdef STM32F303xC
-#  if USED_TIMERS & TIM_N(16)
+#endif
+#endif
+#ifdef STM32F303xC
+#if USED_TIMERS & TIM_N(16)
 _TIM_IRQ_HANDLER2(TIM1_UP_TIM16_IRQHandler, 1, 16);  // both timers are in use
-#  else
+#else
 _TIM_IRQ_HANDLER(TIM1_UP_TIM16_IRQHandler, 1);       // timer16 is not used
-#  endif
-# endif
+#endif
+#endif
 #endif
 #if USED_TIMERS & TIM_N(2)
 _TIM_IRQ_HANDLER(TIM2_IRQHandler, 2);
@@ -730,27 +730,27 @@ _TIM_IRQ_HANDLER(TIM5_IRQHandler, 5);
 #endif
 #if USED_TIMERS & TIM_N(8)
 _TIM_IRQ_HANDLER(TIM8_CC_IRQHandler, 8);
-# if defined(STM32F10X_XL)
+#if defined(STM32F10X_XL)
 _TIM_IRQ_HANDLER(TIM8_UP_TIM13_IRQHandler, 8);
-# else  // f10x_hd, f30x
+#else  // f10x_hd, f30x
 _TIM_IRQ_HANDLER(TIM8_UP_IRQHandler, 8);
-# endif
-# if defined(STM32F40_41xxx)
-#  if USED_TIMERS & TIM_N(13)
+#endif
+#if defined(STM32F40_41xxx)
+#if USED_TIMERS & TIM_N(13)
 _TIM_IRQ_HANDLER2(TIM8_UP_TIM13_IRQHandler, 8, 13);  // both timers are in use
-#  else
+#else
 _TIM_IRQ_HANDLER(TIM8_UP_TIM13_IRQHandler, 8);     // timer13 is not used
-#  endif
-# endif
-# if defined (STM32F411xE)
-# endif
+#endif
+#endif
+#if defined (STM32F411xE)
+#endif
 #endif
 #if USED_TIMERS & TIM_N(9)
 _TIM_IRQ_HANDLER(TIM1_BRK_TIM9_IRQHandler, 9);
 #endif
-#  if USED_TIMERS & TIM_N(11)
+#if USED_TIMERS & TIM_N(11)
 _TIM_IRQ_HANDLER(TIM1_TRG_COM_TIM11_IRQHandler, 11);
-#  endif
+#endif
 #if USED_TIMERS & TIM_N(12)
 _TIM_IRQ_HANDLER(TIM8_BRK_TIM12_IRQHandler, 12);
 #endif

@@ -18,9 +18,9 @@
 #pragma once
 
 #ifndef __UNIQL
-# define __UNIQL_CONCAT2(x,y) x ## y
-# define __UNIQL_CONCAT(x,y) __UNIQL_CONCAT2(x,y)
-# define __UNIQL(x) __UNIQL_CONCAT(x,__LINE__)
+#define __UNIQL_CONCAT2(x,y) x ## y
+#define __UNIQL_CONCAT(x,y) __UNIQL_CONCAT2(x,y)
+#define __UNIQL(x) __UNIQL_CONCAT(x,__LINE__)
 #endif
 
 // overwrite _name with data passed as arguments. This version forces GCC to really copy data

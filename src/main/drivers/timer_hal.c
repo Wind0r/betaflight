@@ -758,11 +758,11 @@ static void timCCxHandler(TIM_TypeDef *tim, timerConfig_t *timerConfig)
 
 #if USED_TIMERS & TIM_N(1)
 _TIM_IRQ_HANDLER(TIM1_CC_IRQHandler, 1);
-#  if USED_TIMERS & TIM_N(10)
+#if USED_TIMERS & TIM_N(10)
 _TIM_IRQ_HANDLER2(TIM1_UP_TIM10_IRQHandler, 1, 10);  // both timers are in use
-#  else
+#else
 _TIM_IRQ_HANDLER(TIM1_UP_TIM10_IRQHandler, 1);     // timer10 is not used
-#  endif
+#endif
 #endif
 
 #if USED_TIMERS & TIM_N(2)
@@ -781,19 +781,19 @@ _TIM_IRQ_HANDLER(TIM5_IRQHandler, 5);
 #if USED_TIMERS & TIM_N(8)
 _TIM_IRQ_HANDLER(TIM8_CC_IRQHandler, 8);
 
-#  if USED_TIMERS & TIM_N(13)
+#if USED_TIMERS & TIM_N(13)
 _TIM_IRQ_HANDLER2(TIM8_UP_TIM13_IRQHandler, 8, 13);  // both timers are in use
-#  else
+#else
 _TIM_IRQ_HANDLER(TIM8_UP_TIM13_IRQHandler, 8);     // timer13 is not used
-#  endif
+#endif
 #endif
 
 #if USED_TIMERS & TIM_N(9)
 _TIM_IRQ_HANDLER(TIM1_BRK_TIM9_IRQHandler, 9);
 #endif
-#  if USED_TIMERS & TIM_N(11)
+#if USED_TIMERS & TIM_N(11)
 _TIM_IRQ_HANDLER(TIM1_TRG_COM_TIM11_IRQHandler, 11);
-#  endif
+#endif
 #if USED_TIMERS & TIM_N(12)
 _TIM_IRQ_HANDLER(TIM8_BRK_TIM12_IRQHandler, 12);
 #endif

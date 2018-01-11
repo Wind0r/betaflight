@@ -151,7 +151,7 @@ uint32_t IO_EXTI_Line(IO_t io)
 #elif defined(SIMULATOR_BUILD)
     return 0;
 #else
-# error "Unknown target type"
+#error "Unknown target type"
 #endif
 }
 

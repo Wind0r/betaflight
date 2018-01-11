@@ -43,7 +43,7 @@ static const uint8_t extiGroupIRQn[EXTI_IRQ_GROUPS] = {
     EXTI15_10_IRQn
 };
 #else
-# warning "Unknown CPU"
+#warning "Unknown CPU"
 #endif
 
 
@@ -121,7 +121,7 @@ void EXTIConfig(IO_t io, extiCallbackRec_t *cb, int irqPriority, EXTITrigger_Typ
 #elif defined(STM32F4)
     SYSCFG_EXTILineConfig(IO_EXTI_PortSourceGPIO(io), IO_EXTI_PinSource(io));
 #else
-# warning "Unknown CPU"
+#warning "Unknown CPU"
 #endif
     uint32_t extiLine = IO_EXTI_Line(io);
 
@@ -180,7 +180,7 @@ void EXTIEnable(IO_t io, bool enable)
     else
         EXTI->IMR &= ~(1 << extiLine);
 #else
-# error "Unsupported target"
+#error "Unsupported target"
 #endif
 }
 
@@ -212,7 +212,7 @@ _EXTI_IRQ_HANDLER(EXTI2_IRQHandler);
 #elif defined(STM32F3)
 _EXTI_IRQ_HANDLER(EXTI2_TS_IRQHandler);
 #else
-# warning "Unknown CPU"
+#warning "Unknown CPU"
 #endif
 _EXTI_IRQ_HANDLER(EXTI3_IRQHandler);
 _EXTI_IRQ_HANDLER(EXTI4_IRQHandler);

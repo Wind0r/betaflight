@@ -45,39 +45,39 @@
 // XXX Do these belong here?
 
 #ifdef USE_UART1_RX_DMA
-# define UART1_RX_DMA DMA1_Channel5
+#define UART1_RX_DMA DMA1_Channel5
 #else
-# define UART1_RX_DMA 0
+#define UART1_RX_DMA 0
 #endif
 
 #ifdef USE_UART1_TX_DMA
-# define UART1_TX_DMA DMA1_Channel4
+#define UART1_TX_DMA DMA1_Channel4
 #else
-# define UART1_TX_DMA 0
+#define UART1_TX_DMA 0
 #endif
 
 #ifdef USE_UART2_RX_DMA
-# define UART2_RX_DMA DMA1_Channel6
+#define UART2_RX_DMA DMA1_Channel6
 #else
-# define UART2_RX_DMA 0
+#define UART2_RX_DMA 0
 #endif
 
 #ifdef USE_UART2_TX_DMA
-# define UART2_TX_DMA DMA1_Channel7
+#define UART2_TX_DMA DMA1_Channel7
 #else
-# define UART2_TX_DMA 0
+#define UART2_TX_DMA 0
 #endif
 
 #ifdef USE_UART3_RX_DMA
-# define UART3_RX_DMA DMA1_Channel3
+#define UART3_RX_DMA DMA1_Channel3
 #else
-# define UART3_RX_DMA 0
+#define UART3_RX_DMA 0
 #endif
 
 #ifdef USE_UART3_TX_DMA
-# define UART3_TX_DMA DMA1_Channel2
+#define UART3_TX_DMA DMA1_Channel2
 #else
-# define UART3_TX_DMA 0
+#define UART3_TX_DMA 0
 #endif
 
 const uartHardware_t uartHardware[UARTDEV_COUNT] = {

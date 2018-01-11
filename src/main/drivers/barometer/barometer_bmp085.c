@@ -51,7 +51,7 @@ void bmp085_extiHandler(extiCallbackRec_t* cb)
 }
 
 bool bmp085TestEOCConnected(const bmp085Config_t *config);
-# endif
+#endif
 
 typedef struct {
     int16_t ac1;

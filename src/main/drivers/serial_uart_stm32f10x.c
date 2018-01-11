@@ -41,15 +41,15 @@
 #ifdef USE_UART
 
 #ifdef USE_UART1_RX_DMA
-# define UART1_RX_DMA_CHANNEL DMA1_Channel5
+#define UART1_RX_DMA_CHANNEL DMA1_Channel5
 #else
-# define UART1_RX_DMA_CHANNEL 0
+#define UART1_RX_DMA_CHANNEL 0
 #endif
 
 #ifdef USE_UART1_TX_DMA
-# define UART1_TX_DMA_CHANNEL DMA1_Channel4
+#define UART1_TX_DMA_CHANNEL DMA1_Channel4
 #else
-# define UART1_TX_DMA_CHANNEL 0
+#define UART1_TX_DMA_CHANNEL 0
 #endif
 
 #define UART2_RX_DMA_CHANNEL 0

@@ -2,16 +2,16 @@
 use warnings;
 use strict;
 
-# This sript will generate templated files for peripherals
+#This sript will generate templated files for peripherals
 
-# io_def_generated.h
+#io_def_generated.h
 
 my @ports = ('A', 'B', 'C', 'D', 'E', 'F', 'G');
 my @pins  = 0 .. 15;
 my @timers = (1,2,3,4,6,7,8,15,16,17);
 my $drivers_dir = "../main/drivers";
 
-# change list separator to newline - we use @{} interpolation to merge multiline strings
+#change list separator to newline - we use @{} interpolation to merge multiline strings
 $" = "\n";
 
 chomp(my $license = <<"END");
@@ -55,11 +55,11 @@ ${disclaimer_generated}
     my @prev_ports = ();
     map { my $port = $_;  my $ret = << "END2"; push @prev_ports, $port; $ret } @ports; }]}
 #if defined(TARGET_IO_PORT${port})
-# define DEFIO_PORT_${port}_USED_MASK TARGET_IO_PORT${port}
-# define DEFIO_PORT_${port}_USED_COUNT BITCOUNT(DEFIO_PORT_${port}_USED_MASK)
+#define DEFIO_PORT_${port}_USED_MASK TARGET_IO_PORT${port}
+#define DEFIO_PORT_${port}_USED_COUNT BITCOUNT(DEFIO_PORT_${port}_USED_MASK)
 #else
-# define DEFIO_PORT_${port}_USED_MASK 0
-# define DEFIO_PORT_${port}_USED_COUNT 0
+#define DEFIO_PORT_${port}_USED_MASK 0
+#define DEFIO_PORT_${port}_USED_COUNT 0
 #endif
 #define DEFIO_PORT_${port}_OFFSET (@{[join('+', map {  "DEFIO_PORT_${_}_USED_COUNT" } @prev_ports) || '0']})
 END2
@@ -78,13 +78,13 @@ END2
     my @prev_ports = ();
     map { my $port = $_;  my @ret = map { my $pin = $_; chomp(my $ret = << "END2"); $ret } @pins ; push @prev_ports, $port; @ret } @ports; }]}
 #if DEFIO_PORT_${port}_USED_MASK & BIT(${pin})
-# define DEFIO_TAG__P${port}${pin} DEFIO_TAG_MAKE(DEFIO_GPIOID__${port}, ${pin})
-# define DEFIO_TAG_E__P${port}${pin} DEFIO_TAG_MAKE(DEFIO_GPIOID__${port}, ${pin})
-# define DEFIO_REC__P${port}${pin} DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_${port}_USED_MASK & (BIT(${pin}) - 1)) + @{[join('+', map {  "DEFIO_PORT_${_}_USED_COUNT" } @prev_ports) || '0']})
+#define DEFIO_TAG__P${port}${pin} DEFIO_TAG_MAKE(DEFIO_GPIOID__${port}, ${pin})
+#define DEFIO_TAG_E__P${port}${pin} DEFIO_TAG_MAKE(DEFIO_GPIOID__${port}, ${pin})
+#define DEFIO_REC__P${port}${pin} DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_${port}_USED_MASK & (BIT(${pin}) - 1)) + @{[join('+', map {  "DEFIO_PORT_${_}_USED_COUNT" } @prev_ports) || '0']})
 #else
-# define DEFIO_TAG__P${port}${pin} defio_error_P${port}${pin}_is_not_supported_on_TARGET
-# define DEFIO_TAG_E__P${port}${pin} DEFIO_TAG_E__NONE
-# define DEFIO_REC__P${port}${pin} defio_error_P${port}${pin}_is_not_supported_on_TARGET
+#define DEFIO_TAG__P${port}${pin} defio_error_P${port}${pin}_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__P${port}${pin} DEFIO_TAG_E__NONE
+#define DEFIO_REC__P${port}${pin} defio_error_P${port}${pin}_is_not_supported_on_TARGET
 #endif
 END2
 
@@ -98,19 +98,19 @@ END2
     my @used_ports = @ports;
     map { my $port = $_; chomp(my $ret = << "END2"); @used_ports = grep {$_ ne $port} @used_ports; $ret } reverse(@ports) }]}
 #if !defined DEFIO_PORT_USED_LIST && DEFIO_PORT_${port}_USED_COUNT > 0
-# define DEFIO_PORT_USED_COUNT @{[scalar @used_ports]}
-# define DEFIO_PORT_USED_LIST @{[join(',', map { "DEFIO_PORT_${_}_USED_MASK" } @used_ports)]}
-# define DEFIO_PORT_OFFSET_LIST @{[join(',', map { "DEFIO_PORT_${_}_OFFSET" } @used_ports)]}
+#define DEFIO_PORT_USED_COUNT @{[scalar @used_ports]}
+#define DEFIO_PORT_USED_LIST @{[join(',', map { "DEFIO_PORT_${_}_USED_MASK" } @used_ports)]}
+#define DEFIO_PORT_OFFSET_LIST @{[join(',', map { "DEFIO_PORT_${_}_OFFSET" } @used_ports)]}
 #endif
 END2
 
 #if !defined(DEFIO_PORT_USED_LIST)
-# if !defined DEFIO_NO_PORTS   // supress warnings if we really don't want any pins
-#  warning "No pins are defined. Maybe you forgot to define TARGET_IO_PORTx in target.h"
-# endif
-# define DEFIO_PORT_USED_COUNT 0
-# define DEFIO_PORT_USED_LIST /* empty */
-# define DEFIO_PORT_OFFSET_LIST /* empty */
+#if !defined DEFIO_NO_PORTS   // supress warnings if we really don't want any pins
+#warning "No pins are defined. Maybe you forgot to define TARGET_IO_PORTx in target.h"
+#endif
+#define DEFIO_PORT_USED_COUNT 0
+#define DEFIO_PORT_USED_LIST /* empty */
+#define DEFIO_PORT_OFFSET_LIST /* empty */
 #endif
 
 END
@@ -126,7 +126,7 @@ ${disclaimer_generated}
 // make sure macros for all timers are defined
 @{[ map { my $timer = $_; chomp(my $ret = << "END2"); $ret } @timers ]}
 #ifndef TARGET_TIMER_TIM${timer}
-# define TARGET_TIMER_TIM${timer} -1
+#define TARGET_TIMER_TIM${timer} -1
 #endif
 END2
 
@@ -135,11 +135,11 @@ END2
      my @prev_timers = ();
      map { my $timer = $_; chomp(my $ret = << "END2"); push @prev_timers, $timer; $ret } @timers }]}
 #if TARGET_TIMER_TIM${timer} > 0
-# define TARGET_TIMER_TIM${timer}_BIT BIT(${timer})
-# define TARGET_TIMER_TIM${timer}_INDEX  ( @{[ join("+", map("(TARGET_TIMER_TIM${_} >= 0)", @prev_timers)) || 0 ]} )
+#define TARGET_TIMER_TIM${timer}_BIT BIT(${timer})
+#define TARGET_TIMER_TIM${timer}_INDEX  ( @{[ join("+", map("(TARGET_TIMER_TIM${_} >= 0)", @prev_timers)) || 0 ]} )
 #else
-# define TARGET_TIMER_TIM${timer}_BIT 0
-# define TARGET_TIMER_TIM${timer}_INDEX deftimer_error_TIMER${timer}_is_not_enabled_on_target
+#define TARGET_TIMER_TIM${timer}_BIT 0
+#define TARGET_TIMER_TIM${timer}_INDEX deftimer_error_TIMER${timer}_is_not_enabled_on_target
 #endif
 END2
 #define TIMER_USED_BITS  ( @{[ join "|", map("TARGET_TIMER_TIM${_}_BIT", @timers) ]} )
@@ -151,9 +151,9 @@ struct timerRec_all {
 @{[ map { my $timer = $_; chomp(my $ret = << "END2"); $ret } @timers ]}
 #if TARGET_TIMER_TIM${timer} >= 0
     timerRec_t rec_TIM${timer};
-# if TARGET_TIMER_TIM${timer} > 0
+#if TARGET_TIMER_TIM${timer} > 0
     timerChRec_t rec_TIM${timer}_ch[TARGET_TIMER_TIM${timer}];
-# endif
+#endif
 #endif
 END2
 };

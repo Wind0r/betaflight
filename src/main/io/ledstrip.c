@@ -86,7 +86,7 @@ static void ledStripDisable(void);
 #define MAX_TIMER_DELAY (5 * 1000 * 1000)
 
 #if LED_MAX_STRIP_LENGTH > WS2811_LED_STRIP_LENGTH
-# error "Led strip length must match driver"
+#error "Led strip length must match driver"
 #endif
 
 typedef enum {
