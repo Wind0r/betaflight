@@ -208,6 +208,7 @@ CFLAGS     += $(ARCH_FLAGS) \
               $(DEBUG_FLAGS) \
               -std=gnu11 \
               -Wall -Wextra -Wunsafe-loop-optimizations -Wdouble-promotion \
+			  -Wno-cast-function-type \
               -ffunction-sections \
               -fdata-sections \
               -fno-common \

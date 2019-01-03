@@ -475,8 +475,7 @@ static uint16_t getRxfailValue(uint8_t channel)
             else
                 return rxConfig()->rx_min_usec;
         }
-        /* no break */
-
+    FALLTHROUGH;
     default:
     case RX_FAILSAFE_MODE_INVALID:
     case RX_FAILSAFE_MODE_HOLD:
